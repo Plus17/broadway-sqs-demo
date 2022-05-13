@@ -1,21 +1,31 @@
 # SqsDemo
 
-**TODO: Add description**
+Demo to work with Broadway and SQS (LocalStack). [Reference](https://hidnasio.github.io/elixir/2022/04/02/local-development-with-localstack-and-elixir-broadway.html?utm_medium=email&utm_source=elixir-radar)
+
+[Amazon SQS Broadway Producer](https://hexdocs.pm/broadway/amazon-sqs.html)
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `sqs_demo` to your list of dependencies in `mix.exs`:
+1. Clone the repository
 
-```elixir
-def deps do
-  [
-    {:sqs_demo, "~> 0.1.0"}
-  ]
-end
+```bash
+git clone
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/sqs_demo](https://hexdocs.pm/sqs_demo).
+2. Install dependencies
+```elixir
+mix deps.get && mix deps.compile
+```
 
+3. Start LocalStack
+```bash
+docker-compose up
+```
+
+4. Send some messages
+```elixir
+iex(17)> Enum.each(1..10, fn _index -> SqsDemo.send_message() end)
+:ok
+```
+
+Broadway will process the messages.
