@@ -29,3 +29,6 @@ iex(17)> Enum.each(1..10, fn _index -> SqsDemo.send_message() end)
 ```
 
 Broadway will process the messages.
+
+![image](https://user-images.githubusercontent.com/8551125/168344910-69117fbb-bff1-425d-a75c-f57586dc98ba.png)
+
