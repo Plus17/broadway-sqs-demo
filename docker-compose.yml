@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  localstack:
+    container_name: "localstack_main"
+    image: localstack/localstack
+    network_mode: bridge
+    ports:
+      - "127.0.0.1:4566:4566"
+    environment:
+      - SERVICES=sqs
+      - INIT_SCRIPTS_DIR=/docker-entrypoint-initaws.d
+      - DEBUG=true
+      - DATA_DIR=/tmp/localstack/data
+      - HOST_TMP_FOLDER=/tmp/localstack
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - ./aws:/docker-entrypoint-initaws.d
+      - "/tmp/localstack:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
