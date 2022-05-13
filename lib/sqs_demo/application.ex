@@ -10,6 +10,7 @@ defmodule SqsDemo.Application do
     children = [
       # Starts a worker by calling: SqsDemo.Worker.start_link(arg)
       # {SqsDemo.Worker, arg}
+      {SqsDemo.TestPipeline, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
